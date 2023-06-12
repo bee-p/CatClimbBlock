@@ -7,24 +7,22 @@ public class PlayerController : MonoBehaviour
     private int count = 0;              // 블럭 카운트
 
     // 바로 위의 블럭을 가져와서 반환하는 함수
-    private GameObject findBlock()
+    private GameObject FindNextBlock()
     {
         GameObject[] obj = GameObject.FindGameObjectsWithTag("Block");   // 블럭들 가져오기
 
         return obj[count];
     }
 
-    // 빨간 블럭이 맞다면 이동
-    public void moveRedBlock()
+    // 빨간 버튼을 눌렀을 때 실행할 함수
+    public void ClickedRedButton()
     {
-        Debug.Log("빨간 버튼을 눌렀습니다.");
+        // 다음 블럭 가져오기
+        GameObject block = FindNextBlock();
 
-        GameObject block = findBlock();
-
+        // 다음 블럭이 빨간 블럭이라면
         if (block.name == "blockRedPrefab(Clone)")
         {
-            Debug.Log("빨간 블럭이 맞습니다!");
-
             // 1. 블럭 한 단계 이동
             transform.position = new Vector3(block.transform.position.x, block.transform.position.y + 1, 0);
 
@@ -37,17 +35,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // 파란 블럭이 맞다면 이동
-    public void moveBlueBlock()
+    // 파란 버튼을 눌렀을 때 실행할 함수
+    public void ClickedBlueButton()
     {
-        Debug.Log("파란 버튼을 눌렀습니다.");
+        // 다음 블럭 가져오기
+        GameObject block = FindNextBlock();
 
-        GameObject block = findBlock();
-
+        // 다음 블럭이 파란 블럭이라면
         if (block.name == "blockBluePrefab(Clone)")
         {
-            Debug.Log("파란 블럭이 맞습니다!");
-
             // 1. 블럭 한 단계 이동
             transform.position = new Vector3(block.transform.position.x, block.transform.position.y + 1, 0);
 
@@ -60,17 +56,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // 초록 블럭이 맞다면 이동
-    public void moveGreenBlock()
+    // 초록 버튼을 눌렀을 때 실행할 함수
+    public void ClickedGreenButton()
     {
-        Debug.Log("초록 버튼을 눌렀습니다.");
+        // 다음 블럭 가져오기
+        GameObject block = FindNextBlock();
 
-        GameObject block = findBlock();
-
+        // 다음 블럭이 초록 블럭이라면
         if (block.name == "blockGreenPrefab(Clone)")
         {
-            Debug.Log("초록 블럭이 맞습니다!");
-
             // 1. 블럭 한 단계 이동
             transform.position = new Vector3(block.transform.position.x, block.transform.position.y + 1, 0);
 

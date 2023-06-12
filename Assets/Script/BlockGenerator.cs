@@ -14,7 +14,7 @@ public class BlockGenerator : MonoBehaviour
     private int maxCount = 10;                  // 한 번에 생성할 최대 블럭 개수
     private bool isCreateBlock = true;          // 블럭 생성 트리거(true == 생성)
 
-    public void setIsCreateBlock(bool isCreateBlock)
+    public void SetIsCreateBlock(bool isCreateBlock)
     {
         this.isCreateBlock = isCreateBlock;
     }

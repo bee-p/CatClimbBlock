@@ -8,7 +8,7 @@ public class GeneratorManager : MonoBehaviour
     private GameObject blockGenerator;
     private GameObject backgroundGenerator;
 
-    private int heightPoint = 9;      // 오브젝트를 생성할 기준 높이(캐릭터가 이 높이에 오면 생성)
+    private int heightPoint = -6;      // 오브젝트를 생성할 기준 높이(캐릭터가 이 높이에 오면 생성)
     private int distance = 19;        // 배경 간 거리(높이 차)
 
     private void Start()
@@ -24,8 +24,8 @@ public class GeneratorManager : MonoBehaviour
         if (player.transform.position.y >= heightPoint)
         {
             // 블록, 배경 생성 플래그 올림
-            blockGenerator.GetComponent<BlockGenerator>().setIsCreateBlock(true);
-            backgroundGenerator.GetComponent<BackgroundGenerator>().setIsCreateBackground(true);
+            blockGenerator.GetComponent<BlockGenerator>().SetIsCreateBlock(true);
+            backgroundGenerator.GetComponent<BackgroundGenerator>().SetIsCreateBackground(true);
 
             // 기준 높이 업데이트
             heightPoint += distance;
