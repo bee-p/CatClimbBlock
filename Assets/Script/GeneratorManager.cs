@@ -9,7 +9,7 @@ public class GeneratorManager : MonoBehaviour
     private GameObject backgroundGenerator;
 
     private int heightPoint = -6;      // 오브젝트를 생성할 기준 높이(캐릭터가 이 높이에 오면 생성)
-    private int distance = 19;        // 배경 간 거리(높이 차)
+    private int distance = 19;         // 배경 간 거리(높이 차)
 
     private void Start()
     {

@@ -8,21 +8,14 @@ public class BackgroundGenerator : MonoBehaviour
     public GameObject bgSkyToSpacePrefab;
     public GameObject bgSpacePrefab;
 
-    private GameObject player;
-
-    private int count = 0;            // 생성한 전체 배경 개수(누적)
-    private int createHeight = 19;    // 실제 배경을 생성할 높이
-    private int distance = 19;        // 배경 간 거리(높이 차)
+    private int count = 0;                      // 생성한 전체 배경 개수(누적)
+    private int createHeight = 19;              // 실제 배경을 생성할 높이
+    private int distance = 19;                  // 배경 간 거리(높이 차)
     private bool isCreateBackground = false;    // 배경 생성 트리거(true == 생성)
 
     public void SetIsCreateBackground(bool isCreateBackground)
     {
         this.isCreateBackground = isCreateBackground;
-    }
-
-    private void Start()
-    {
-        this.player = GameObject.Find("cat");
     }
 
     private void Update()

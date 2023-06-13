@@ -8,20 +8,15 @@ public class BlockGenerator : MonoBehaviour
     public GameObject blockBluePrefab;
     public GameObject blockGreenPrefab;
 
-    private float yPos = -2.3f;                 // 블럭 높이(y좌표, 시작 높이는 -2.3)
-    private float plusHeight = 2.5f;            // 블럭 사이 높이 간격
-    private int count = 0;                      // 생성한 블럭 개수 카운트
-    private int maxCount = 10;                  // 한 번에 생성할 최대 블럭 개수
-    private bool isCreateBlock = true;          // 블럭 생성 트리거(true == 생성)
+    private float yPos = -2.3f;             // 블럭 높이(y좌표, 시작 높이는 -2.3)
+    private float plusHeight = 2.5f;        // 블럭 사이 높이 간격
+    private int count = 0;                  // 생성한 블럭 개수 카운트
+    private int maxCount = 10;              // 한 번에 생성할 최대 블럭 개수
+    private bool isCreateBlock = true;      // 블럭 생성 트리거(true == 생성)
 
     public void SetIsCreateBlock(bool isCreateBlock)
     {
         this.isCreateBlock = isCreateBlock;
-    }
-
-    private void Start()
-    {
-        
     }
 
     private void Update()
