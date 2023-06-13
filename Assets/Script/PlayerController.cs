@@ -8,9 +8,10 @@ public class PlayerController : MonoBehaviour
     GameObject eventObjectGenerator;
 
     private int count = 0;                  // 블럭 누적 카운트
-    private int eventRatio = 5;            // 돌발 이벤트가 발생되는 확률
+    private int eventRatio = 5;             // 돌발 이벤트가 발생되는 확률
     private bool isPermitEvent = false;     // 이벤트 발동 허용 플래그
     private bool isActiveEvent = false;     // 현재 이벤트가 활성화 되었는지(진행 중인지) 여부
+    private bool isGameOver = false;
 
     public int GetBlockCount()
     {
@@ -75,6 +76,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Game Over");
 
             gameDirector.GetComponent<GameDirector>().ShowGameOverUI();
+            isGameOver = true;
         }
     }
 
@@ -86,6 +88,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        // 이벤트 발동이 허용된 상태인지 체크
         if (isPermitEvent)
         {
             int dice = Random.Range(1, 101);    // 1~100
@@ -105,6 +108,20 @@ public class PlayerController : MonoBehaviour
 
             // 이벤트 발동 허용 플래그 내리기
             isPermitEvent = false;
+        }
+
+        // 현재 게임오버 상태인지 체크
+        if (isGameOver)
+        {
+            // 캐릭터 밑으로 떨어지게 함
+            GetComponent<BoxCollider2D>().isTrigger = true;
+
+            // 처음 시작 지점 쯤까지 오면 (떨어지는 위치가 땅 위일 경우) 땅에 착지할 수 있도록 함
+            if (transform.position.y < -5.1f)
+            {
+                GetComponent<BoxCollider2D>().isTrigger = false;
+                isGameOver = false;
+            }
         }
     }
 }
