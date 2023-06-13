@@ -1540,6 +1540,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cf84e54773ae5849be6ec582def599a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1657745462
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1657745464}
+  - component: {fileID: 1657745463}
+  m_Layer: 0
+  m_Name: EventObjectGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1657745463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657745462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8de69cec3a83a5444a8dbdbd461d554e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  birdsPrefab: {fileID: 305788845431357515, guid: 1567e05a9253c8d47a2adf9db64b4abd, type: 3}
+  rocketPrefab: {fileID: 6915505242433242198, guid: e03e88b4c65856e4dbfdf69b79550512, type: 3}
+--- !u!4 &1657745464
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657745462}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.2097082, y: 71.74463, z: -0.6198425}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1860574695
 GameObject:
   m_ObjectHideFlags: 0
