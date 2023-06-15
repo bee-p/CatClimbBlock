@@ -8,8 +8,8 @@ public class GameDirector : MonoBehaviour
 {
     private GameObject player;
 
-    private GameObject currenScoreUI;
-    private GameObject lastScoreUI;
+    private GameObject currenScoreUI;   // 게임 중일 때 나타나는 현재 점수
+    private GameObject lastScoreUI;     // 게임오버 됐을 때 나타나는 점수 UI
 
     public void ShowGameOverUI()
     {
@@ -27,6 +27,7 @@ public class GameDirector : MonoBehaviour
 
     public void ClickedGameOverUI()
     {
+        // 게임 재시작
         SceneManager.LoadScene("GameScene");
     }
 
@@ -40,11 +41,12 @@ public class GameDirector : MonoBehaviour
 
     private void Update()
     {
+        // 블럭을 오른 개수로 점수 업데이트
         currenScoreUI.transform.Find("backgroundScore").transform.
             Find("score").GetComponent<Text>().text = player.GetComponent<PlayerController>().GetBlockCount().ToString();
 
         // 레벨 디자인
-        int currentCount = player.GetComponent<PlayerController>().GetBlockCount();
+        int currentCount = player.GetComponent<PlayerController>().GetBlockCount(); // 현재 오른 블럭의 개수 가져옴
         if (10 <= currentCount && currentCount < 18)
         {
             player.GetComponent<PlayerController>().SetEventRatio(7);

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BackgroundGenerator : MonoBehaviour
 {
-    public GameObject bgSkyPrefab;
-    public GameObject bgSkyToSpacePrefab;
-    public GameObject bgSpacePrefab;
+    public GameObject bgSkyPrefab;              // 하늘 배경
+    public GameObject bgSkyToSpacePrefab;       // 하늘->우주로 넘어가는 배경
+    public GameObject bgSpacePrefab;            // 우주 배경
 
     private int count = 0;                      // 생성한 전체 배경 개수(누적)
     private int createHeight = 19;              // 실제 배경을 생성할 높이
@@ -20,6 +20,7 @@ public class BackgroundGenerator : MonoBehaviour
 
     private void Update()
     {
+        // 배경을 생성해도 된다면
         if (isCreateBackground)
         {
             GameObject background;
@@ -37,10 +38,11 @@ public class BackgroundGenerator : MonoBehaviour
                 background = Instantiate(bgSpacePrefab);
             }
 
+            // 생성한 배경 높이 설정
             background.transform.position = new Vector3(0, createHeight, 0);
 
             createHeight += distance;   // 높이 업데이트
-            count++;                    // 생성한 배경 수 +1
+            count++;                    // 생성한 배경 수 카운트 +1
             isCreateBackground = false; // 플래그 다시 내리기
         }
     }

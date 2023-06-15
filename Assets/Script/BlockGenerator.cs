@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BlockGenerator : MonoBehaviour
 {
-    public GameObject blockRedPrefab;
-    public GameObject blockBluePrefab;
-    public GameObject blockGreenPrefab;
+    public GameObject blockRedPrefab;       // 빨강 블럭
+    public GameObject blockBluePrefab;      // 파랑 블럭
+    public GameObject blockGreenPrefab;     // 초록 블럭
 
     private float yPos = -2.3f;             // 블럭 높이(y좌표, 시작 높이는 -2.3)
     private float plusHeight = 2.5f;        // 블럭 사이 높이 간격
@@ -21,6 +21,7 @@ public class BlockGenerator : MonoBehaviour
 
     private void Update()
     {
+        // 블럭을 생성해도 된다면
         if (isCreateBlock)
         {
             GameObject block;

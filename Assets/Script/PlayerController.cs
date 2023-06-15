@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     private int eventRatio = 5;             // 돌발 이벤트가 발생되는 확률
     private bool isPermitEvent = false;     // 이벤트 발동 허용 플래그
     private bool isActiveEvent = false;     // 현재 이벤트가 활성화 되었는지(진행 중인지) 여부
-    private bool isGameOver = false;
+    private bool isGameOver = false;        // 게임오버 플래그
 
     public int GetBlockCount()
     {
@@ -31,8 +31,10 @@ public class PlayerController : MonoBehaviour
     // 바로 위의 블럭을 가져와서 반환하는 함수
     private GameObject FindNextBlock()
     {
-        GameObject[] obj = GameObject.FindGameObjectsWithTag("Block");   // 블럭들 가져오기
+        // 블럭들 가져오기
+        GameObject[] obj = GameObject.FindGameObjectsWithTag("Block");
 
+        // 현재 기준 캐릭터 바로 위의 블럭 반환
         return obj[count];
     }
 
@@ -98,6 +100,8 @@ public class PlayerController : MonoBehaviour
                 // 이벤트 발동
                 isActiveEvent = true;
                 
+                // 이벤트 종류 선택 다이스
+                // 0: 새, 1: 로켓
                 int typeDice = Random.Range(0, 2);  // 0~1
                 
                 GameObject nextBlock = FindNextBlock();
@@ -117,7 +121,7 @@ public class PlayerController : MonoBehaviour
             GetComponent<BoxCollider2D>().isTrigger = true;
 
             // 처음 시작 지점 쯤까지 오면 (떨어지는 위치가 땅 위일 경우) 땅에 착지할 수 있도록 함
-            if (transform.position.y < -5.1f)
+            if (transform.position.y < -4f)
             {
                 GetComponent<BoxCollider2D>().isTrigger = false;
                 isGameOver = false;
