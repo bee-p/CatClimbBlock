@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    Animator animator;
     GameObject gameDirector;
     GameObject eventObjectGenerator;
 
@@ -64,8 +65,11 @@ public class PlayerController : MonoBehaviour
         // 다음 블럭과 누른 버튼의 색깔이 일치하고, 이벤트가 진행 중이 아니라면
         if (block.name == buttonName && !isActiveEvent)
         {
-            // 1. 블럭 한 단계 이동
+            // 1-1. 한 단계 위의 블럭으로 이동
             transform.position = new Vector3(block.transform.position.x, block.transform.position.y + 1, 0);
+
+            // 1-2. 오르기 애니메이션 재생
+            animator.Play("climb");
 
             // 2. 블럭 카운트 증가
             count++;
@@ -83,7 +87,8 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Start()
-    { 
+    {
+        this.animator = GetComponent<Animator>();
         this.gameDirector = GameObject.Find("GameDirector");
         this.eventObjectGenerator = GameObject.Find("EventObjectGenerator");
     }
