@@ -33,6 +33,10 @@ public class GameDirector : MonoBehaviour
 
     private void Start()
     {
+        // 초기 배경 음악 정지
+        GameObject startAudio = GameObject.Find("StartAudio");
+        Destroy(startAudio);
+
         player = GameObject.Find("cat");
 
         currenScoreUI = GameObject.Find("currentScoreUI");

@@ -6,12 +6,23 @@ using UnityEngine.SceneManagement;
 public class StartDirector : MonoBehaviour
 {
     private GameObject highlight;
+    private GameObject button;       // 버튼 클릭시 효과음 집어넣기 위해 가져옴
     private bool active = false;     // 하이라이트 활성화/비활성화 조작을 위한 변수
+
+    // 다음 씬으로 이동하는 함수
+    private void GoNextScene()
+    {
+        // 스토리 화면으로 이동
+        SceneManager.LoadScene("StoryScene");
+    }
 
     public void ClickedStartButton()
     {
-        // 게임 화면으로 이동
-        SceneManager.LoadScene("GameScene");
+        // 효과음 재생
+        button.GetComponent<AudioSource>().Play();
+
+        // 0.5초 뒤 다음 씬으로 이동
+        Invoke("GoNextScene", 0.5f);
     }
 
     private void ChangeActiveHighlight()
@@ -25,10 +36,11 @@ public class StartDirector : MonoBehaviour
 
     private void Start()
     {
+        this.button = GameObject.Find("buttonStart");
         this.highlight = GameObject.Find("highlight");
 
-        // 0.6초마다 하이라이트 활성화/비활성화 조작
+        // 0.47초마다 하이라이트 활성화/비활성화 조작
         // 하이라이트 이미지가 깜빡깜빡하게 함
-        InvokeRepeating("ChangeActiveHighlight", 0f, 0.6f);
+        InvokeRepeating("ChangeActiveHighlight", 0f, 0.47f);
     }
 }

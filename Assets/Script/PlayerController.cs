@@ -68,7 +68,10 @@ public class PlayerController : MonoBehaviour
             // 1-1. 한 단계 위의 블럭으로 이동
             transform.position = new Vector3(block.transform.position.x, block.transform.position.y + 1, 0);
 
-            // 1-2. 오르기 애니메이션 재생
+            // 1-2. 오르기 효과음 재생
+            GetComponent<AudioSource>().Play();
+
+            // 1-3. 오르기 애니메이션 재생
             animator.Play("climb");
 
             // 2. 블럭 카운트 증가
@@ -79,6 +82,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            // 블럭 색이 일치하지 않거나, 이벤트가 진행 중일 때 버튼을 눌렀을 시 게임 오버
             Debug.Log("Game Over");
 
             gameDirector.GetComponent<GameDirector>().ShowGameOverUI();
