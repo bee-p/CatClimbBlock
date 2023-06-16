@@ -5,7 +5,7 @@ using UnityEngine;
 public class BirdsController : MonoBehaviour
 {
     private GameObject player;
-    private float speed = 0.1f;         // 새가 날아가는 속도
+    private float speed = 0.06f;         // 새가 날아가는 속도
 
     // 새 효과음들을 재생하기 위함
     private AudioSource audioSource;
@@ -64,7 +64,7 @@ public class BirdsController : MonoBehaviour
         transform.Translate(speed, 0, 0);
 
         // 화면 밖으로 나가면 오브젝트를 소멸
-        if (transform.position.x > 5.0f)
+        if (transform.position.x > 6f)
         {
             Destroy(gameObject);
 

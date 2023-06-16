@@ -12,12 +12,12 @@ public class EventObjectGenerator : MonoBehaviour
         if (type == 0)      // birds 생성
         {
             GameObject go = Instantiate(birdsPrefab);
-            go.transform.position = new Vector3(-6f, yPos, 0f);
+            go.transform.position = new Vector3(-6f, yPos, 0f);   // 왼쪽 끝에서 생성
         }
         else if (type == 1) // rocket 생성
         {
             GameObject go = Instantiate(rocketPrefab);
-            go.transform.position = new Vector3(-6f, yPos, 0f);
+            go.transform.position = new Vector3(-6f, yPos, 0f);   // 왼쪽 끝에서 생성
         }
     }
 }

@@ -14,6 +14,15 @@ public class BlockGenerator : MonoBehaviour
     private int maxCount = 10;              // 한 번에 생성할 최대 블럭 개수
     private bool isCreateBlock = true;      // 블럭 생성 트리거(true == 생성)
 
+    /** 편의상 switch item 생성 관련 코드는 이 스크립트에 구현했습니다. **/
+    public GameObject switchItemPrefab;
+    private int itemRatio = 0;              // switch item 생성 확률
+
+    public void SetItemRatio(int itemRatio)
+    {
+        this.itemRatio = itemRatio;
+    }
+
     public void SetIsCreateBlock(bool isCreateBlock)
     {
         this.isCreateBlock = isCreateBlock;
@@ -45,6 +54,18 @@ public class BlockGenerator : MonoBehaviour
             // 블럭의 x좌표값 다이스
             float xPosDice = Random.Range(-4, 5);
             block.transform.position = new Vector3(xPosDice, yPos, 0f);
+
+            /** switch item 생성 여부 다이스 **/
+            int createItemDice = Random.Range(1, 101);  // 1~100
+            
+            if (createItemDice < itemRatio)
+            {   
+                // switch item 생성
+                GameObject item = Instantiate(switchItemPrefab);
+                float itemYPos = block.transform.position.y + 1.6f;
+                item.transform.position = new Vector3(block.transform.position.x, itemYPos, 0f);
+            }
+            /**    ----------------------    **/
 
             yPos += plusHeight;         // plusHeight만큼 높이 올림
 

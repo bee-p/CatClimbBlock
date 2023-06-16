@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GeneratorManager : MonoBehaviour
+public class StageGeneratorManager : MonoBehaviour
 {
     private GameObject player;
     private GameObject blockGenerator;

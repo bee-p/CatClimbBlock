@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    Animator animator;
-    GameObject gameDirector;
-    GameObject eventObjectGenerator;
+    private Animator animator;
+    private GameObject gameDirector;
+    private GameObject eventObjectGenerator;
+
+    private AudioSource takeItemSound;              // 아이템 획득 효과음
 
     private int count = 0;                  // 블럭 누적 카운트
     private int eventRatio = 5;             // 돌발 이벤트가 발생되는 확률
@@ -90,11 +92,29 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // switch item과 부딪쳤을 경우
+        if (collision.name == "itemSwitchPrefab(Clone)")
+        {
+            // 획득 사운드 재생
+            takeItemSound.Play();
+
+            // 버튼 순서 교체 실시
+            gameDirector.GetComponent<GameDirector>().SwitchButtonUI();
+            
+            // 아이템 제거
+            Destroy(collision.gameObject);
+        }
+    }
+
     private void Start()
     {
         this.animator = GetComponent<Animator>();
         this.gameDirector = GameObject.Find("GameDirector");
         this.eventObjectGenerator = GameObject.Find("EventObjectGenerator");
+
+        this.takeItemSound = GameObject.Find("TakeItemSource").GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -106,13 +126,13 @@ public class PlayerController : MonoBehaviour
 
             if (dice < eventRatio)
             {
-                // 이벤트 발동
+                // 이벤트 발동 플래그 ON
                 isActiveEvent = true;
-                
+
                 // 이벤트 종류 선택 다이스
                 // 0: 새, 1: 로켓
                 int typeDice = Random.Range(0, 2);  // 0~1
-                
+
                 GameObject nextBlock = FindNextBlock();
                 float yPos = nextBlock.transform.position.y;
 
