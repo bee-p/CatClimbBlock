@@ -25,11 +25,11 @@ public class BackgroundGenerator : MonoBehaviour
         {
             GameObject background;
 
-            if (count < 3)          // 하늘 배경 생성(초입-총 3개 생성)
+            if (count < 5)          // 하늘 배경 생성(초입-총 5개 생성)
             {
                 background = Instantiate(bgSkyPrefab);
             }
-            else if (count == 3)    // 하늘->우주 진입 배경 생성
+            else if (count == 5)    // 하늘->우주 진입 배경 생성
             {
                 background = Instantiate(bgSkyToSpacePrefab);
             }

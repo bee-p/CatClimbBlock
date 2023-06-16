@@ -11,6 +11,8 @@ public class EventObjectGenerator : MonoBehaviour
     {
         if (type == 0)      // birds 생성
         {
+            yPos += 0.2f;                                         // 높이 조정
+
             GameObject go = Instantiate(birdsPrefab);
             go.transform.position = new Vector3(-6f, yPos, 0f);   // 왼쪽 끝에서 생성
         }
