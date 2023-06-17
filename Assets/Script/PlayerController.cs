@@ -149,8 +149,8 @@ public class PlayerController : MonoBehaviour
             // 캐릭터 밑으로 떨어지게 함
             GetComponent<BoxCollider2D>().isTrigger = true;
 
-            // 처음 시작 지점 쯤까지 오면 (떨어지는 위치가 땅 위일 경우) 땅에 착지할 수 있도록 함
-            if (transform.position.y < -4f)
+            // 처음 시작 지점 쯤까지 오면 바닥에 착지할 수 있도록 함
+            if (transform.position.y < 0f)
             {
                 GetComponent<BoxCollider2D>().isTrigger = false;
                 isGameOver = false;
